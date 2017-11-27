@@ -1,0 +1,9 @@
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\Casino.AdminPortal.DTOModel.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\Casino.AdminPortal.DTOModel.pdb
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\Casino.AdminPortal.Shared.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\System.Web.Http.Common.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\Casino.AdminPortal.Shared.pdb
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\bin\Debug\System.Web.Http.Common.xml
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\obj\Debug\Casino.AdminPortal.DTOModel.csprojResolveAssemblyReference.cache
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\obj\Debug\Casino.AdminPortal.DTOModel.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.DTOModel\obj\Debug\Casino.AdminPortal.DTOModel.pdb

@@ -1,0 +1,14 @@
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\Casino.AdminPortal.EntityDataModel.dll.config
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\Casino.AdminPortal.EntityDataModel.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\Casino.AdminPortal.EntityDataModel.pdb
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\Casino.AdminPortal.Shared.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\EntityFramework.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\System.Web.Http.Common.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\Casino.AdminPortal.Shared.pdb
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\EntityFramework.xml
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\bin\Debug\System.Web.Http.Common.xml
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\obj\Debug\Casino.AdminPortal.EntityDataModel.csprojResolveAssemblyReference.cache
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\obj\Debug\Casino.AdminPortal.EntityDataModel.dll
+C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.EntityDataModel\obj\Debug\Casino.AdminPortal.EntityDataModel.pdb
