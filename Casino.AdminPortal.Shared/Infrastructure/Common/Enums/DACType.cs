@@ -3,12 +3,12 @@
     /// <summary>
     /// Data Access Component Type
     /// </summary>
-    public enum DACType
+    public enum DacType
     {
 
         [QualifiedTypeName("Casino.AdminPortal.Data.dll", "Casino.AdminPortal.Data.SampleDAC")]
-        SampleDAC = 1,
+        SampleDac = 1,
         [QualifiedTypeName("Casino.AdminPortal.Data.dll", "Casino.AdminPortal.Data.UserDAC")]
-        UserDAC = 2,
+        UserDac = 2,
     }
 }

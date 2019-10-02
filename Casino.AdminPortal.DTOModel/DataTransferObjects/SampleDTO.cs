@@ -3,9 +3,9 @@
 namespace Casino.AdminPortal.DTOModel
 {
     [EntityMapping("Casino.AdminPortal.EntityDataModel.EntityModel.Sample", MappingType.TotalExplicit)]
-    public class SampleDTO : DTOBase, ISampleDTO
+    public class SampleDto : DtoBase, ISampleDto
     {
-        public SampleDTO() : base(DTOType.SampleDTO)
+        public SampleDto() : base(DtoType.SampleDto)
         {
 
         }

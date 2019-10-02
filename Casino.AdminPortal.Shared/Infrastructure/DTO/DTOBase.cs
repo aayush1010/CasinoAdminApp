@@ -12,29 +12,29 @@
     /// </summary>
     [Serializable]
     [DataContract(Name = "DTOBase", Namespace = "Casino.AdminPortal.Shared")]
-    public abstract class DTOBase : IDTO
+    public abstract class DtoBase : IDto
     {
-        private Guid? _uniqueID;
+        private readonly Guid? _uniqueId;
         private ObjectStateType _objState;
 
         #region Ctor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DTOBase"/> class.
+        /// Initializes a new instance of the <see cref="DtoBase"/> class.
         /// </summary>
-        protected DTOBase()
-            : this(DTOType.Undefined)
+        protected DtoBase()
+            : this(DtoType.Undefined)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DTOBase"/> class.
+        /// Initializes a new instance of the <see cref="DtoBase"/> class.
         /// </summary>
         /// <param name="dtoType">Type of the dto.</param>
-        protected DTOBase(DTOType dtoType)
+        protected DtoBase(DtoType dtoType)
         {
-            this.DTOType = dtoType;
-            this._uniqueID = Guid.NewGuid();
+            this.DtoType = dtoType;
+            this._uniqueId = Guid.NewGuid();
             this.ObjectState = ObjectStateType.None;
         }
         #endregion
@@ -46,11 +46,7 @@
         /// </summary>
         /// <value>The unique ID.</value>
         //[DataMember]
-        public Guid? UniqueID
-        {
-            get { return _uniqueID; }
-            //set { mUniqueID = value; }
-        }
+        public Guid? UniqueId => _uniqueId;
 
         /// <summary>
         /// private gets or private sets the state of the object.
@@ -59,7 +55,7 @@
         [DataMember]
         public ObjectStateType ObjectState
         {
-            get { return _objState; }
+            get => _objState;
             set
             {
                 if (value != ObjectStateType.None &&
@@ -82,7 +78,7 @@
         /// </summary>
         /// <value>The type of the DTO.</value>
         [DataMember]
-        public DTOType DTOType { get; private set; }
+        public DtoType DtoType { get; private set; }
 
         #endregion
 

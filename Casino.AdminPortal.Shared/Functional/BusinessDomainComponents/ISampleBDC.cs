@@ -1,7 +1,7 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
-    public interface ISampleBDC : IBusinessDomainComponent
+    public interface ISampleBdc : IBusinessDomainComponent
     {
-        OperationResult<ISampleDTO> SampleMethod(ISampleDTO sampleDTO);
+        OperationResult<ISampleDto> SampleMethod(ISampleDto sampleDto);
     }
 }

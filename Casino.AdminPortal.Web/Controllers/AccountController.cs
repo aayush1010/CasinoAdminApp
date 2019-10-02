@@ -27,26 +27,14 @@ namespace Casino.AdminPortal.Web.Controllers
 
         public ApplicationSignInManager SignInManager
         {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
+            get => _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            private set => _signInManager = value;
         }
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            private set => _userManager = value;
         }
 
         //
@@ -76,15 +64,23 @@ namespace Casino.AdminPortal.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                {
                     return RedirectToLocal(returnUrl);
+                }
                 case SignInStatus.LockedOut:
+                {
                     return View("Lockout");
+                }
                 case SignInStatus.RequiresVerification:
+                {
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                }
                 case SignInStatus.Failure:
                 default:
+                {
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+                }
             }
         }
 
@@ -121,13 +117,19 @@ namespace Casino.AdminPortal.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                {
                     return RedirectToLocal(model.ReturnUrl);
+                }
                 case SignInStatus.LockedOut:
+                {
                     return View("Lockout");
+                }
                 case SignInStatus.Failure:
                 default:
+                {
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
+                }
             }
         }
 
@@ -330,21 +332,28 @@ namespace Casino.AdminPortal.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                {
                     return RedirectToLocal(returnUrl);
+                }
                 case SignInStatus.LockedOut:
+                {
                     return View("Lockout");
+                }
                 case SignInStatus.RequiresVerification:
+                {
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                }
                 case SignInStatus.Failure:
                 default:
+                {
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                }
             }
         }
 
-        //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
@@ -424,13 +433,7 @@ namespace Casino.AdminPortal.Web.Controllers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
         private void AddErrors(IdentityResult result)
         {

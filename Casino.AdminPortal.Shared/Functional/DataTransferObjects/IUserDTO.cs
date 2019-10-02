@@ -1,7 +1,7 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
      
-    public interface IUserDTO : IDTO
+    public interface IUserDto : IDto
     {
  
         int PlayerId { get; set; }

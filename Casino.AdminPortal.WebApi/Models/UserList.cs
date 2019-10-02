@@ -4,6 +4,6 @@ namespace Casino.AdminPortal.WebApi.Models
 {
     public class UserList
     {
-        public List<User>  userList { get; set; }
+        public List<User>  UserList { get; set; }
     }
 }

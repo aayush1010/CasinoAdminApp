@@ -4,19 +4,19 @@
     /// Represents the factory for Data Transfer Objects,
     /// Author : Nagarro 
     /// </summary>    
-    public class DTOFactory : FactoryBase, IDTOFactory
+    public class DtoFactory : FactoryBase, IDtoFactory
     {
         //The variable is declared to be volatile to ensure that assignment to the 
         //_instance variable completes before the instance variable can be accessed.
-        private static volatile DTOFactory _instance;
-        private static object _syncObject = new object();
+        private static volatile DtoFactory _instance;
+        private static readonly object _syncObject = new object();
 
         #region Ctor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DTOFactory"/> class.
+        /// Initializes a new instance of the <see cref="DtoFactory"/> class.
         /// </summary>
-        private DTOFactory()
+        private DtoFactory()
         {
         }
         #endregion
@@ -27,7 +27,7 @@
         /// Instance is private static property to return the same Instance of the class everytime.
         /// Note: Double - checked serialized initialization of Class pattern is used.
         /// </summary>       
-        public static DTOFactory Instance
+        public static DtoFactory Instance
         {
             get
             {
@@ -42,7 +42,7 @@
                         //since some other thread may have acquired the lock first and constructed the object.
                         if (_instance == null)
                         {
-                            _instance = new DTOFactory();
+                            _instance = new DtoFactory();
                         }
                     }
                 }
@@ -62,18 +62,18 @@
         /// <param name="type">The type.</param>
         /// <param name="args">The args.</param>
         /// <returns></returns>
-        public IDTO Create(DTOType type, params object[] args)
+        public IDto Create(DtoType type, params object[] args)
         {
             try
             {
                 // get type info
-                QualifiedTypeNameAttribute QualifiedNameAttr = EnumAttributeUtility<DTOType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
+                QualifiedTypeNameAttribute qualifiedNameAttr = EnumAttributeUtility<DtoType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
 
                 // Initialize instance
-                IDTO instance = null;
+                IDto instance = null;
 
                 // create instance
-                instance = (IDTO)this.CreateObjectInstance(QualifiedNameAttr.AssemblyFileName, QualifiedNameAttr.QualifiedTypeName, args);
+                instance = (IDto)this.CreateObjectInstance(qualifiedNameAttr.AssemblyFileName, qualifiedNameAttr.QualifiedTypeName, args);
 
                 // return
                 return instance;

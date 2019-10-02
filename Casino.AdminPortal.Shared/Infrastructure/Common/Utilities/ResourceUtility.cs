@@ -10,7 +10,7 @@
     /// </summary>
     public static class ResourceUtility
     {
-        private static ResourceManager ResourceManager = new ResourceManager("Resources.Resource", Assembly.Load("App_GlobalResources"));
+        private static readonly ResourceManager _resourceManager = new ResourceManager("Resources.Resource", Assembly.Load("App_GlobalResources"));
 
         /// <summary>
         /// 
@@ -21,7 +21,7 @@
         {
             string retVal = string.Empty;
 
-            retVal = ResourceManager.GetString(key);
+            retVal = _resourceManager.GetString(key);
 
             return retVal;
         }

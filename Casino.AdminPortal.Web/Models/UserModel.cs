@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Casino.AdminPortal.Web.Models
 {
-    public class UserModel : DTOBase ,IUserDTO
+    public class UserModel : DtoBase ,IUserDto
     {
        public int PlayerId { get; set; }
        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = Constants.UserMessage.ErrorName)]

@@ -18,7 +18,7 @@ namespace Casino.AdminPortal.Shared
         /// <summary>
         /// Local Cache
         /// </summary>
-        private static readonly Dictionary<string, TAttribute> attrDict = new Dictionary<string, TAttribute>();
+        private static readonly Dictionary<string, TAttribute> AttrDict = new Dictionary<string, TAttribute>();
 
         /// <summary>
         /// Initializes the <see cref="EnumAttributeUtility&lt;TEnum, TAttribute&gt;"/> class.
@@ -26,10 +26,10 @@ namespace Casino.AdminPortal.Shared
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static EnumAttributeUtility()
         {
-            TEnum E = new TEnum();
-            if (attrDict.Count == 0)
+            TEnum e = new TEnum();
+            if (AttrDict.Count == 0)
             {
-                Type t = E.GetType();
+                Type t = e.GetType();
                 if (t.IsEnum)
                 {
                     FieldInfo[] fields = t.GetFields();
@@ -39,7 +39,7 @@ namespace Casino.AdminPortal.Shared
                         if (attrs.Length == 1)
                         {
                             TAttribute fieldTagAttr = (TAttribute)attrs[0];
-                            attrDict.Add(fInfo.GetValue(E).ToString(), fieldTagAttr);
+                            AttrDict.Add(fInfo.GetValue(e).ToString(), fieldTagAttr);
                         }
                     }
                 }
@@ -52,7 +52,7 @@ namespace Casino.AdminPortal.Shared
         /// <returns></returns>
         public static Dictionary<string, TAttribute> GetList()
         {
-            return attrDict;
+            return AttrDict;
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace Casino.AdminPortal.Shared
         [SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes")]
         public static TAttribute GetEnumAttribute(string enumField)
         {
-            if (attrDict.ContainsKey(enumField))
-                return attrDict[enumField];
+            if (AttrDict.ContainsKey(enumField))
+                return AttrDict[enumField];
             else
                 throw new AttributeNotDefinedException(enumField);
         }

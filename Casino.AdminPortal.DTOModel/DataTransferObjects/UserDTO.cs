@@ -4,9 +4,9 @@ namespace Casino.AdminPortal.DTOModel
 {
     [ViewModelMapping("Casino.AdminPortal.Web.Models.UserModel", MappingType.TotalExplicit)]
     [EntityMapping("Casino.AdminPortal.EntityDataModel.EntityModel.Player", MappingType.TotalExplicit)]
-    public class UserDTO : DTOBase, IUserDTO
+    public class UserDto : DtoBase, IUserDto
     {
-        public UserDTO() : base(DTOType.UserDTO)
+        public UserDto() : base(DtoType.UserDto)
         {
 
         }

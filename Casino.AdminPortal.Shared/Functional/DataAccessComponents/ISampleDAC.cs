@@ -1,7 +1,7 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
-    public interface ISampleDAC : IDataAccessComponent
+    public interface ISampleDac : IDataAccessComponent
     {
-        ISampleDTO SampleMethod(ISampleDTO sampleDTO);
+        ISampleDto SampleMethod(ISampleDto sampleDto);
     }
 }

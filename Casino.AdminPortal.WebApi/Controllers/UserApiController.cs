@@ -7,13 +7,13 @@ namespace Casino.AdminPortal.WebApi.Controllers
 {
     public class UserApiController : ApiController
     {
-        IUserFacade userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
+        readonly IUserFacade _userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
         public UserList GetAllUsers()
         {
            
-            OperationResult<IList<IUserDTO>> resultAllUsers = userFacade.GetAllUsers();
+            OperationResult<IList<IUserDto>> resultAllUsers = _userFacade.GetAllUsers();
             UserList result = new UserList();
-            result.userList = new List<User>();
+            result.UserList = new List<User>();
             if (resultAllUsers.IsValid())
             {
                 foreach (var item in resultAllUsers.Data)
@@ -23,7 +23,7 @@ namespace Casino.AdminPortal.WebApi.Controllers
                     temp.EmailId = item.EmailId;
                     temp.AccountBalance = item.AccountBalance;
                     temp.BlockedAmount = item.BlockedAmount;
-                    result.userList.Add(temp);
+                    result.UserList.Add(temp);
                 }
             }
             else
@@ -35,7 +35,7 @@ namespace Casino.AdminPortal.WebApi.Controllers
         public User GetUserByMail(string email)
         {
 
-            OperationResult<IUserDTO> resultUser = userFacade.GetUserByEmail(email);
+            OperationResult<IUserDto> resultUser = _userFacade.GetUserByEmail(email);
             User result = new User();
             if (resultUser.IsValid())
             {
@@ -51,7 +51,7 @@ namespace Casino.AdminPortal.WebApi.Controllers
 
         [HttpPatch]
         public User BlockedAmount(string emailid, int amount) {
-            OperationResult<IUserDTO> resultUser = userFacade.BlockAmount(emailid, amount);
+            OperationResult<IUserDto> resultUser = _userFacade.BlockAmount(emailid, amount);
             User result = new User();
             if (resultUser.IsValid())
             {
@@ -68,7 +68,7 @@ namespace Casino.AdminPortal.WebApi.Controllers
         [HttpPatch]
         public User AddWinningAmount(string emailid, int amount, decimal multiply)
         {
-            OperationResult<IUserDTO> resultUser = userFacade.AddWinningAmount(emailid, amount, multiply);
+            OperationResult<IUserDto> resultUser = _userFacade.AddWinningAmount(emailid, amount, multiply);
             User result = new User();
             if (resultUser.IsValid())
             {

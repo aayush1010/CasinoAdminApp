@@ -9,10 +9,10 @@ namespace Casino.AdminPortal.BusinessFacades
 
         }
 
-        public OperationResult<ISampleDTO> SampleMethod(ISampleDTO sampleDTO)
+        public OperationResult<ISampleDto> SampleMethod(ISampleDto sampleDto)
         {
-            ISampleBDC sampleBDC = (ISampleBDC)BDCFactory.Instance.Create(BDCType.SampleBDC);//because bdcfactory is singleton, as we cant create object with new keyword
-            return sampleBDC.SampleMethod(sampleDTO);
+            ISampleBdc sampleBdc = (ISampleBdc)BdcFactory.Instance.Create(BdcType.SampleBdc);//because bdcfactory is singleton, as we cant create object with new keyword
+            return sampleBdc.SampleMethod(sampleDto);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ISampleFacade : IFacade
     {
-        OperationResult<ISampleDTO> SampleMethod(ISampleDTO sampleDTO);
+        OperationResult<ISampleDto> SampleMethod(ISampleDto sampleDto);
     }
 }

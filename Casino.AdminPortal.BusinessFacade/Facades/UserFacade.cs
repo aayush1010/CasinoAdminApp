@@ -11,51 +11,51 @@ namespace Casino.AdminPortal.BusinessFacades
 
         }
 
-        public OperationResult<IUserDTO> CreateUser(IUserDTO userDTO)
+        public OperationResult<IUserDto> CreateUser(IUserDto userDto)
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.CreateUser(userDTO);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.CreateUser(userDto);
         }
-        public OperationResult<IList<IUserDTO>> GetAllUsers()
+        public OperationResult<IList<IUserDto>> GetAllUsers()
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.GetAllUsers();
-        }
-
-
-        public OperationResult<IUserDTO> GetUserByEmail(string email)
-        {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.GetUserByEmail(email);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.GetAllUsers();
         }
 
-        public OperationResult<IUserDTO> GetUserByContactNumber(string contactNumber)
+
+        public OperationResult<IUserDto> GetUserByEmail(string email)
+        {
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.GetUserByEmail(email);
+        }
+
+        public OperationResult<IUserDto> GetUserByContactNumber(string contactNumber)
         {
             throw new NotImplementedException();
         }
 
-        public OperationResult<IUserDTO> RechargeAccount(string emailId, decimal amount)
+        public OperationResult<IUserDto> RechargeAccount(string emailId, decimal amount)
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.RechargeAccount(emailId, amount);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.RechargeAccount(emailId, amount);
         }
 
-        public OperationResult<IUserDTO> BlockAmount(string emailId, int amount)
+        public OperationResult<IUserDto> BlockAmount(string emailId, int amount)
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.BlockAmount(emailId, amount);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.BlockAmount(emailId, amount);
         }
 
-        public OperationResult<IUserDTO> AddWinningAmount(string emailId, int betAmount, decimal multiply)
+        public OperationResult<IUserDto> AddWinningAmount(string emailId, int betAmount, decimal multiply)
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.AddWinningAmount(emailId, betAmount, multiply);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.AddWinningAmount(emailId, betAmount, multiply);
         }
 
-        public OperationResult<IList<IUserDTO>> SearchUser(string name, string contact, string email)
+        public OperationResult<IList<IUserDto>> SearchUser(string name, string contact, string email)
         {
-            IUserBDC userBDC = (IUserBDC)BDCFactory.Instance.Create(BDCType.UserBDC);
-            return userBDC.SearchUser(name,contact, email);
+            IUserBdc userBdc = (IUserBdc)BdcFactory.Instance.Create(BdcType.UserBdc);
+            return userBdc.SearchUser(name,contact, email);
         }
     }
 }

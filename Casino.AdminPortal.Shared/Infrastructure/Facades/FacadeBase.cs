@@ -36,39 +36,21 @@ namespace Casino.AdminPortal.Shared
         /// </summary>
         /// <value>The facade.</value>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        protected FacadeFactory Facade
-        {
-            get
-            {
-                return FacadeFactory.Instance;
-            }
-        }
+        protected FacadeFactory Facade => FacadeFactory.Instance;
 
         /// <summary>
         /// Gets the factory for the business domain component.
         /// </summary>
         /// <value>The business domain component.</value>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        protected BDCFactory BusinessDomainComponent
-        {
-            get
-            {
-                return BDCFactory.Instance;
-            }
-        }
+        protected BdcFactory BusinessDomainComponent => BdcFactory.Instance;
 
         /// <summary>
         /// Gets the factory for the data transfer object.
         /// </summary>
         /// <value>The data transfer object.</value>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        protected DTOFactory DataTransferObject
-        {
-            get
-            {
-                return DTOFactory.Instance;
-            }
-        }
+        protected DtoFactory DataTransferObject => DtoFactory.Instance;
 
         #endregion
 
