@@ -5,6 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Casino.AdminPortal.Shared.Functional.BusinessFacades;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.Common.OperationResult;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Validation;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
+using Casino.AdminPortal.Shared.Infrastructure.Facades;
 using PagedList;
 
 namespace Casino.AdminPortal.Web.Controllers

@@ -1,9 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using System;
-using System.Reflection;
+﻿using System;
 using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Utilities
 {
     /// <summary>
     /// Provides static utility methods for data validation purposes,

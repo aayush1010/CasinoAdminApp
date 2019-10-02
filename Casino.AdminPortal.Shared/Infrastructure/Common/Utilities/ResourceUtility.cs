@@ -1,10 +1,11 @@
-﻿namespace Casino.AdminPortal.Shared
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using System.Resources;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Resources;
+using Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes;
 
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Utilities
+{
     /// <summary>
     /// ResourceUtility reads resource constants.
     /// </summary>

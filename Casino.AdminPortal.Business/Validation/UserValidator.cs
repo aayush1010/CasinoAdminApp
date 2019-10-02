@@ -1,6 +1,11 @@
 ﻿using Casino.AdminPortal.Shared;
 using FluentValidation;
 using System;
+using Casino.AdminPortal.Shared.Functional.DataAccessComponents;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Constants;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
 
 namespace Casino.AdminPortal.Business.Validation
 {

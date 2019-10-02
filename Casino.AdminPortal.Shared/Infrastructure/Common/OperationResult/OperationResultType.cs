@@ -1,4 +1,4 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared.Infrastructure.Common.OperationResult
 {
     /// <summary>
     /// Defines the types of business operation result.

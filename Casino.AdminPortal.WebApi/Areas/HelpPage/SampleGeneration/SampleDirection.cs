@@ -1,4 +1,4 @@
-namespace Casino.AdminPortal.WebApi.Areas.HelpPage
+namespace Casino.AdminPortal.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

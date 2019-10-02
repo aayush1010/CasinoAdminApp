@@ -1,4 +1,10 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿using Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Factory;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Utilities;
+
+namespace Casino.AdminPortal.Shared.Infrastructure.DTO
 {
     /// <summary>
     /// Represents the factory for Data Transfer Objects,
@@ -64,24 +70,17 @@
         /// <returns></returns>
         public IDto Create(DtoType type, params object[] args)
         {
-            try
-            {
-                // get type info
-                QualifiedTypeNameAttribute qualifiedNameAttr = EnumAttributeUtility<DtoType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
+            // get type info
+            QualifiedTypeNameAttribute qualifiedNameAttr = EnumAttributeUtility<DtoType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
 
-                // Initialize instance
-                IDto instance = null;
+            // Initialize instance
+            IDto instance = null;
 
-                // create instance
-                instance = (IDto)this.CreateObjectInstance(qualifiedNameAttr.AssemblyFileName, qualifiedNameAttr.QualifiedTypeName, args);
+            // create instance
+            instance = (IDto)this.CreateObjectInstance(qualifiedNameAttr.AssemblyFileName, qualifiedNameAttr.QualifiedTypeName, args);
 
-                // return
-                return instance;
-            }
-            catch (FactoryException fex)
-            {
-                throw fex;
-            }
+            // return
+            return instance;
         }
 
         #endregion

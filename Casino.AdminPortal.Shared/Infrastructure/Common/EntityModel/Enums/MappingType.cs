@@ -1,4 +1,4 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums
 {
     /// <summary>
     /// Enumeration to define Mapping Strategy of Data with Entity.

@@ -1,6 +1,7 @@
 ﻿using System;
+using Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.CustomAttributes
 {
     /// <summary>
     /// Contains/Represents/Provides Entity mapping attribute,
@@ -30,12 +31,12 @@ namespace Casino.AdminPortal.Shared
         /// Gets or sets the full name of the mapped entity type.
         /// </summary>
         /// <value>The full name of the mapped entity type.</value>
-        public string MappedEntityTypeFullName { get; private set; }
+        public string MappedEntityTypeFullName { get; }
         /// <summary>
         /// Gets or sets the type of the mapping.
         /// </summary>
         /// <value>The type of the mapping.</value>
-        public MappingType MappingType { get; private set; }
+        public MappingType MappingType { get; }
 
         #endregion
 

@@ -1,11 +1,19 @@
-﻿using Casino.AdminPortal.Shared;
-using System;
+﻿using System;
+using Casino.AdminPortal.Shared.Functional.BusinessDomainComponents;
+using Casino.AdminPortal.Shared.Functional.DataAccessComponents;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Business;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.Common.OperationResult;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
 
-namespace Casino.AdminPortal.Business
+namespace Casino.AdminPortal.Business.Business
 {
     public class SampleBdc : BdcBase, ISampleBdc
     {
-        public SampleBdc() : base(Shared.BdcType.SampleBdc)
+        public SampleBdc() : base(BdcType.SampleBdc)
         {
 
         }

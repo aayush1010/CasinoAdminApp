@@ -1,6 +1,12 @@
-﻿using Casino.AdminPortal.Shared;
+﻿using Casino.AdminPortal.Shared.Functional.BusinessDomainComponents;
+using Casino.AdminPortal.Shared.Functional.BusinessFacades;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Business;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.Common.OperationResult;
+using Casino.AdminPortal.Shared.Infrastructure.Facades;
 
-namespace Casino.AdminPortal.BusinessFacades
+namespace Casino.AdminPortal.BusinessFacades.Facades
 {
     public class SampleFacade : FacadeBase, ISampleFacade
     {

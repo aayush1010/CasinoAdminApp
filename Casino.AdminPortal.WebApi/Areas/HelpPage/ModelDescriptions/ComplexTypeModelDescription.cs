@@ -9,6 +9,6 @@ namespace Casino.AdminPortal.WebApi.Areas.HelpPage.ModelDescriptions
             Properties = new Collection<ParameterDescription>();
         }
 
-        public Collection<ParameterDescription> Properties { get; private set; }
+        public Collection<ParameterDescription> Properties { get; }
     }
 }

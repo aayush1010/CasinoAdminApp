@@ -1,12 +1,11 @@
-﻿namespace Casino.AdminPortal.EntityDataModel
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
+using System.Threading;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.Base;
+
+namespace Casino.AdminPortal.EntityDataModel.Exception
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.Serialization;
-    using System.Threading;
-
-    using Casino.AdminPortal.Shared;
-
     /// <summary>
     /// Represents Entity conversion exception,
     /// Author: Nagarro
@@ -73,7 +72,7 @@
         /// <param name="message">The message.</param>
         /// <param name="innerException">The inner exception.</param>
         [SuppressMessage("Microsoft.Globalization", "CA1305:SpecifyIFormatProvider")]
-        public EntityConversionException(string message, Exception innerException)
+        public EntityConversionException(string message, System.Exception innerException)
             : base(MessageHeader + message, innerException)
         {
         }
