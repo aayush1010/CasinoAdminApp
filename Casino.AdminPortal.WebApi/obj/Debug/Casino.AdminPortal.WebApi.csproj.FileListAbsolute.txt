@@ -68,3 +68,6 @@ C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal
 C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.csprojResolveAssemblyReference.cache
 C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.dll
 C:\Users\aayushmittal01\Documents\Visual Studio 2013\Projects\Casino.AdminPortal\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.pdb
+D:\src\git\Repos\local2\casinoap\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.csprojAssemblyReference.cache
+D:\src\git\Repos\local2\casinoap\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.dll
+D:\src\git\Repos\local2\casinoap\Casino.AdminPortal.WebApi\obj\Debug\Casino.AdminPortal.WebApi.pdb

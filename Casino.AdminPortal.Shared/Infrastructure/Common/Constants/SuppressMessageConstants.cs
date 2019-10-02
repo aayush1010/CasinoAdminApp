@@ -1,8 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     /// <summary>
     /// Contains Suppress Message Constants for FxCop.    

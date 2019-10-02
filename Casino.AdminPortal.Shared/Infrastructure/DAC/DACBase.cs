@@ -1,8 +1,5 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
-    using System;
-    using System.Data;
-    using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
 
     public abstract class DACBase : IDataAccessComponent

@@ -1,9 +1,5 @@
 ﻿using Casino.AdminPortal.Shared;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Casino.AdminPortal.Web.Models
 {

@@ -1,16 +1,9 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Configuration;
-    using System.Globalization;
-    using System.IO;
     using System.Reflection;
     using System.Resources;
-    using System.Web;
-    using System.Linq;
-    using Casino.AdminPortal.Shared;
 
     /// <summary>
     /// ResourceUtility reads resource constants.

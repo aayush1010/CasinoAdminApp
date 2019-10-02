@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     /// <summary>
     /// Defines a contract for data access component,

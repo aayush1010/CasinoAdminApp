@@ -1,13 +1,9 @@
 ﻿using Casino.AdminPortal.Shared;
 using Casino.AdminPortal.Web.Models;
-using Casino.AdminPortal.Web.Shared;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using PagedList;
 

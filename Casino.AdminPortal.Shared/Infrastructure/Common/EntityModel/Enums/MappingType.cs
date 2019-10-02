@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     /// <summary>
     /// Enumeration to define Mapping Strategy of Data with Entity.

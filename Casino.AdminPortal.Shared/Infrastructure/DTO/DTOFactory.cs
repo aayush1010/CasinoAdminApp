@@ -1,10 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
-
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     /// <summary>
     /// Represents the factory for Data Transfer Objects,
