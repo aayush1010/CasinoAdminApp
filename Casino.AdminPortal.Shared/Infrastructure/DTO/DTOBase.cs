@@ -1,11 +1,12 @@
-﻿namespace Casino.AdminPortal.Shared
-{
-    using System;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Runtime.Serialization.Formatters.Binary;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
 
+namespace Casino.AdminPortal.Shared.Infrastructure.DTO
+{
     /// <summary>
     /// Represents the abstract base class for all Data Transfer Objects,
     /// Author : Nagarro     

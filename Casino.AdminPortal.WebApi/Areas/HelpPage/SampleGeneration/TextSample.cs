@@ -1,6 +1,6 @@
 using System;
 
-namespace Casino.AdminPortal.WebApi.Areas.HelpPage
+namespace Casino.AdminPortal.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
@@ -16,7 +16,7 @@ namespace Casino.AdminPortal.WebApi.Areas.HelpPage
             Text = text;
         }
 
-        public string Text { get; private set; }
+        public string Text { get; }
 
         public override bool Equals(object obj)
         {

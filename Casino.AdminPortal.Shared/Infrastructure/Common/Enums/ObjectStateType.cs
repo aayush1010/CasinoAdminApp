@@ -1,4 +1,4 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared.Infrastructure.Common.Enums
 {
     /// <summary>
     /// 

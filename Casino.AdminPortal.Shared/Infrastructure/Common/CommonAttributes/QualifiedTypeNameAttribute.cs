@@ -1,6 +1,7 @@
 ﻿using System;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Utilities;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes
 {
     /// <summary>
     /// Represent a Qualified type name attribute,
@@ -27,13 +28,13 @@ namespace Casino.AdminPortal.Shared
         /// Gets the name of the assembly file.
         /// </summary>
         /// <value>The name of the assembly file.</value>
-        public string AssemblyFileName { get; private set; }
+        public string AssemblyFileName { get; }
 
         /// <summary>
         /// Gets the name of the qualified type.
         /// </summary>
         /// <value>The name of the qualified type.</value>
-        public string QualifiedTypeName { get; private set; }
+        public string QualifiedTypeName { get; }
 
         #endregion
 

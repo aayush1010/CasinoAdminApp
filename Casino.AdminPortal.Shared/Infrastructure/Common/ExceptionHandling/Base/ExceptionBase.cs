@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.Base
 {
     /// <summary>
     /// Represents abstract base class for custom exceptions,

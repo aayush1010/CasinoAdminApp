@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Constants;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Validation;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.OperationResult
 {
 
     /// <summary>
@@ -39,25 +41,25 @@ namespace Casino.AdminPortal.Shared
         /// Gets or sets the type of the result.
         /// </summary>
         /// <value>The type of the result.</value>
-        public OperationResultType ResultType { get; private set; }
+        public OperationResultType ResultType { get; }
 
         /// <summary>
         /// Gets or sets the message.
         /// </summary>
         /// <value>The message.</value>
-        public string Message { get; private set; }
+        public string Message { get; }
 
         /// <summary>
         /// Gets or sets the stack trace.
         /// </summary>
         /// <value>The stack trace.</value>
-        public string StackTrace { get; private set; }
+        public string StackTrace { get; }
 
         /// <summary>
         /// Gets or sets the validation result.
         /// </summary>
         /// <value>The JCC validation result.</value>
-        public EmployeePortalValidationResult ValidationResult { get; private set; }
+        public EmployeePortalValidationResult ValidationResult { get; }
 
         #region Ctor
 

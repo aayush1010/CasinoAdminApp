@@ -1,4 +1,6 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿using Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes;
+
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Enums
 {
     /// <summary>
     /// Data Access Component Type

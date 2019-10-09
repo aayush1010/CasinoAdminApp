@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Functional.DataAccessComponents
 {
     public interface IUserDac : IDataAccessComponent
     {

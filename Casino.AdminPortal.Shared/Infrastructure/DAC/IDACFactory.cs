@@ -1,4 +1,6 @@
-﻿namespace Casino.AdminPortal.Shared
+﻿using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+
+namespace Casino.AdminPortal.Shared.Infrastructure.DAC
 {
     /// <summary>
     /// Defines a contract for data access component factory,

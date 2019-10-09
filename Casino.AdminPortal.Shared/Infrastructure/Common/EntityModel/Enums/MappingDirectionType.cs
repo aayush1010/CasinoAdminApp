@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums
 {
     /// <summary>
     /// 

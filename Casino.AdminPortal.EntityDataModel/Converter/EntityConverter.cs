@@ -1,13 +1,16 @@
-﻿namespace Casino.AdminPortal.EntityDataModel
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
+using Casino.AdminPortal.EntityDataModel.Exception;
+using Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes;
+using Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.CustomAttributes;
+using Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
+
+namespace Casino.AdminPortal.EntityDataModel.Converter
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using System.Threading;
-
-    using Casino.AdminPortal.Shared;
-
-    using MappingType = Casino.AdminPortal.Shared.MappingType;
+    using MappingType = MappingType;
 
     /// <summary>
     /// Represents entity converter,

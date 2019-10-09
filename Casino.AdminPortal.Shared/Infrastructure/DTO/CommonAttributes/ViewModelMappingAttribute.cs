@@ -1,7 +1,8 @@
-﻿namespace Casino.AdminPortal.Shared
-{
-    using System;
+﻿using System;
+using Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums;
 
+namespace Casino.AdminPortal.Shared.Infrastructure.DTO.CommonAttributes
+{
     /// <summary>
     /// Contains/Represents/Provides ViewModel mapping attribute,
     /// </summary>
@@ -30,13 +31,13 @@
         /// Gets the full name of the mapped entity type.
         /// </summary>
         /// <value>The full name of the mapped entity type.</value>
-        public string MappedViewModelTypeFullName { get; private set; }
+        public string MappedViewModelTypeFullName { get; }
 
         /// <summary>
         /// Gets the type of the mapping.
         /// </summary>
         /// <value>The type of the mapping.</value>
-        public MappingType MappingType { get; private set; }
+        public MappingType MappingType { get; }
 
         #endregion
     }

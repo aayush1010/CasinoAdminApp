@@ -13,7 +13,7 @@ using System.Web.Http.Description;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 
-namespace Casino.AdminPortal.WebApi.Areas.HelpPage
+namespace Casino.AdminPortal.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This class will generate the samples for the help page.
@@ -59,7 +59,7 @@ namespace Casino.AdminPortal.WebApi.Areas.HelpPage
         /// <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures",
             Justification = "This is an appropriate nesting of generic types")]
-        public IList<Func<HelpPageSampleGenerator, Type, object>> SampleObjectFactories { get; private set; }
+        public IList<Func<HelpPageSampleGenerator, Type, object>> SampleObjectFactories { get; }
 
         /// <summary>
         /// Gets the request body samples for a given <see cref="ApiDescription"/>.

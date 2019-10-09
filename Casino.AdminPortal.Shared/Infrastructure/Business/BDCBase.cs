@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
 
-
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Business
 {
     /// <summary>
     /// Represents the abstract base class for all Business Domain Components,
@@ -29,7 +31,7 @@ namespace Casino.AdminPortal.Shared
         /// Gets the type of the BDC.
         /// </summary>
         /// <value>The type of the BDC.</value>
-        public BdcType BdcType { get; private set; }
+        public BdcType BdcType { get; }
 
         #endregion
 

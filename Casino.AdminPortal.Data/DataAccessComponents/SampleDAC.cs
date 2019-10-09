@@ -1,6 +1,9 @@
-﻿using Casino.AdminPortal.Shared;
+﻿using Casino.AdminPortal.Shared.Functional.DataAccessComponents;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
 
-namespace Casino.AdminPortal.Data
+namespace Casino.AdminPortal.Data.DataAccessComponents
 {
     public class SampleDac : DacBase, ISampleDac
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 
-
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling
 {
     /// <summary>
     /// Represents manager class to handle exceptions,

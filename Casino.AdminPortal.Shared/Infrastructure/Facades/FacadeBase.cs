@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Casino.AdminPortal.Shared.Infrastructure.Business;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Facades
 {
     /// <summary>
     /// Represents the abstract base class for all facades,
@@ -25,7 +28,7 @@ namespace Casino.AdminPortal.Shared
         /// Gets the type of the facade.
         /// </summary>
         /// <value>The type of the facade.</value>
-        public FacadeType FacadeType { get; private set; }
+        public FacadeType FacadeType { get; }
 
         #endregion
 

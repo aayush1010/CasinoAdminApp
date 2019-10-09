@@ -1,10 +1,17 @@
-﻿using Casino.AdminPortal.EntityDataModel.EntityModel;
-using Casino.AdminPortal.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Casino.AdminPortal.EntityDataModel.Converter;
+using Casino.AdminPortal.EntityDataModel.EntityModel;
+using Casino.AdminPortal.Shared.Functional.DataAccessComponents;
+using Casino.AdminPortal.Shared.Functional.DataTransferObjects;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
+using Casino.AdminPortal.Shared.Infrastructure.DAC;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
 
-namespace Casino.AdminPortal.Data
+namespace Casino.AdminPortal.Data.DataAccessComponents
 {
     public class UserDac : DacBase, IUserDac
     {
@@ -24,7 +31,7 @@ namespace Casino.AdminPortal.Data
                     Player player = new Player();
                     userDto.BlockedAmount = 0;
                     userDto.AccountBalance = 500;
-                    EntityDataModel.EntityConverter.FillEntityFromDto(userDto, player);
+                    EntityConverter.FillEntityFromDto(userDto, player);
                     context.Players.Add(player);
                     if (context.SaveChanges() > 0)
                     {
@@ -50,7 +57,7 @@ namespace Casino.AdminPortal.Data
                 foreach (Player player in context.Players)
                 {
                     IUserDto userDto = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                    EntityDataModel.EntityConverter.FillDtoFromEntity(player, userDto);
+                    EntityConverter.FillDtoFromEntity(player, userDto);
                     userDtoList.Add(userDto);
                 }
                     return userDtoList;
@@ -71,7 +78,7 @@ namespace Casino.AdminPortal.Data
                     if (playerDetails != null)
                     {
                         createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                        EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         
                     }
                 }
@@ -98,7 +105,7 @@ namespace Casino.AdminPortal.Data
                     if (playerDetails != null)
                     {
                         createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                        EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                     }
                 }
             }
@@ -126,7 +133,7 @@ namespace Casino.AdminPortal.Data
                         if (context.SaveChanges() > 0)
                         {
                             createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                            EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         }
                        
                     }
@@ -152,17 +159,19 @@ namespace Casino.AdminPortal.Data
                     if (playerDetails != null && playerDetails.AccountBalance < amountD)
                     {
                         createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                        EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                     }
                     else
                     {
-
-                        playerDetails.BlockedAmount = amount;
-                        playerDetails.AccountBalance -= amountD;
-                        if (context.SaveChanges() > 0)
+                        if (playerDetails != null)
                         {
-                            createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                            playerDetails.BlockedAmount = amount;
+                            playerDetails.AccountBalance -= amountD;
+                            if (context.SaveChanges() > 0)
+                            {
+                                createUserRetval = (IUserDto) DtoFactory.Instance.Create(DtoType.UserDto);
+                                EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                            }
                         }
                     }
                 }
@@ -191,7 +200,7 @@ namespace Casino.AdminPortal.Data
                         if (context.SaveChanges() > 0)
                         {
                             createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
+                            EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         }
 
                     }
@@ -224,7 +233,7 @@ namespace Casino.AdminPortal.Data
                         foreach (var user in userList)
                         {
                             IUserDto userDto = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
-                            EntityDataModel.EntityConverter.FillDtoFromEntity(user, userDto);
+                            EntityConverter.FillDtoFromEntity(user, userDto);
                             retVal.Add(userDto);
                         }
                     }

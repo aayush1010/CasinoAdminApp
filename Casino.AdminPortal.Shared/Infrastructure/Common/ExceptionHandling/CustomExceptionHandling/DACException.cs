@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.Base;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling
 {
     /// <summary>
     /// Represents data access exception,

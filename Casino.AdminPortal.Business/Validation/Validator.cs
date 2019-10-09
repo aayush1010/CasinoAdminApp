@@ -1,7 +1,7 @@
-﻿using Casino.AdminPortal.Shared;
+﻿using Casino.AdminPortal.Shared.Infrastructure.Common.Validation;
 using FluentValidation;
 
-namespace Casino.AdminPortal.Business
+namespace Casino.AdminPortal.Business.Validation
 {
     /// <summary>
     /// 

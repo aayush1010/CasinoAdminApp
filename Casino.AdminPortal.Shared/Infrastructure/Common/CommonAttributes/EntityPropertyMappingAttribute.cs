@@ -1,7 +1,8 @@
-﻿namespace Casino.AdminPortal.Shared
-{
-    using System;
+﻿using System;
+using Casino.AdminPortal.Shared.Infrastructure.Common.EntityModel.Enums;
 
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes
+{
     /// <summary>
     /// Contains/Represents/Provides Entity property mapping attribute,
     /// Author		: Nagarro
@@ -41,13 +42,13 @@
         /// Gets the name of the mapped entity property.
         /// </summary>
         /// <value>The name of the mapped entity property.</value>
-        public string MappedEntityPropertyName { get; private set; }
+        public string MappedEntityPropertyName { get; }
 
         /// <summary>
         /// Gets the mapping direction.
         /// </summary>
         /// <value>The mapping direction.</value>
-        public MappingDirectionType MappingDirection { get; private set; }
+        public MappingDirectionType MappingDirection { get; }
 
         #endregion
     }

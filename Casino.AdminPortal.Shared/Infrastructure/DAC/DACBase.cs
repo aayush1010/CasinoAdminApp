@@ -1,7 +1,9 @@
-﻿namespace Casino.AdminPortal.Shared
-{
-    using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
+using Casino.AdminPortal.Shared.Infrastructure.DTO;
 
+namespace Casino.AdminPortal.Shared.Infrastructure.DAC
+{
     public abstract class DacBase : IDataAccessComponent
     {
 
@@ -22,7 +24,7 @@
         /// private gets the type of the DAC.
         /// </summary>
         /// <value>The type of the DAC.</value>
-        public DacType Type { get; private set; }
+        public DacType Type { get; }
 
         #endregion
 

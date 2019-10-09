@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Constants
 {
     public static class AppConstants
     {

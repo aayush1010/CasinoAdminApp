@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Casino.AdminPortal.Shared;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Validation;
 using FluentValidation.Results;
 
-namespace Casino.AdminPortal.Business
+namespace Casino.AdminPortal.Business.Validation
 {
     public static class ValidationExtensions
     {

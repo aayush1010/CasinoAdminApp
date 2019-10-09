@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Enums;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.DTO
 {
     /// <summary>
     /// Defines a contract for base DTO,

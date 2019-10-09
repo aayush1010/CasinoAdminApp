@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Utilities
 {
     /// <summary>
     /// Provides utility methods for Enum attribute,

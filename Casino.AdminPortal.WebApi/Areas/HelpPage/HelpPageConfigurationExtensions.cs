@@ -13,6 +13,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using Casino.AdminPortal.WebApi.Areas.HelpPage.ModelDescriptions;
 using Casino.AdminPortal.WebApi.Areas.HelpPage.Models;
+using Casino.AdminPortal.WebApi.Areas.HelpPage.SampleGeneration;
 
 namespace Casino.AdminPortal.WebApi.Areas.HelpPage
 {

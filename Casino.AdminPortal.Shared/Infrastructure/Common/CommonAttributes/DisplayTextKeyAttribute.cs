@@ -1,6 +1,7 @@
 ﻿using System;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Utilities;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.CommonAttributes
 {
     /// <summary>
     /// Represent a DisplayTextKey attribute,
@@ -29,7 +30,7 @@ namespace Casino.AdminPortal.Shared
         /// Gets or sets the key for display text.
         /// </summary>
         /// <value>The name of the assembly file.</value>
-        public string Key { get; private set; }
+        public string Key { get; }
 
         #endregion
 

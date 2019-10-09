@@ -2,8 +2,10 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
+using Casino.AdminPortal.Shared.Infrastructure.Common.Constants;
+using Casino.AdminPortal.Shared.Infrastructure.Common.ExceptionHandling.CustomExceptionHandling;
 
-namespace Casino.AdminPortal.Shared
+namespace Casino.AdminPortal.Shared.Infrastructure.Common.Factory
 {
     /// <summary>
     /// Represents the abstract base class for all factories,
