@@ -1,14 +1,10 @@
 ﻿using Casino.AdminPortal.Shared;
 using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Business.Validation
 {
-    public class UserValidator : AbstractValidator<IUserDTO>
+    public class UserValidator : AbstractValidator<IUserDto>
     {
         public UserValidator()
         {
@@ -20,9 +16,9 @@ namespace Casino.AdminPortal.Business.Validation
         }
         private bool IsUniqueEmail(string arg)
         {
-            IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-            IUserDTO userDTO = userDAC.GetUserByEmail(arg);
-            return userDTO == null;
+            IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+            IUserDto userDto = userDac.GetUserByEmail(arg);
+            return userDto == null;
         }
 
         private bool CalculateAge(DateTime dob)

@@ -1,17 +1,12 @@
 ﻿using Casino.AdminPortal.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.DTOModel
 {
     [ViewModelMapping("Casino.AdminPortal.Web.Models.UserModel", MappingType.TotalExplicit)]
     [EntityMapping("Casino.AdminPortal.EntityDataModel.EntityModel.Player", MappingType.TotalExplicit)]
-    public class UserDTO : DTOBase, IUserDTO
+    public class UserDto : DtoBase, IUserDto
     {
-        public UserDTO() : base(DTOType.UserDTO)
+        public UserDto() : base(DtoType.UserDto)
         {
 
         }

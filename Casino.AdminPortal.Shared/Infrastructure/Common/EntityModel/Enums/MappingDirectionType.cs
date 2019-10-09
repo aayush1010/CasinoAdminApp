@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Casino.AdminPortal.Shared
 {
@@ -20,12 +15,12 @@ namespace Casino.AdminPortal.Shared
         /// 
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly")]
-        DTOFromEntity, // DB (Entity) to UI (DTO)
+        DtoFromEntity, // DB (Entity) to UI (DTO)
         /// <summary>
         /// 
         /// </summary>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly")]
-        EntityFromDTO,// UI (DTO) to DB (Entity)
+        EntityFromDto,// UI (DTO) to DB (Entity)
         /// <summary>
         /// 
         /// </summary>

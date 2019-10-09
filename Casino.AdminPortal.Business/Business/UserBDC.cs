@@ -2,239 +2,236 @@
 using Casino.AdminPortal.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Business
 {
-    public class UserBDC : BDCBase, IUserBDC
+    public class UserBdc : BdcBase, IUserBdc
     {
-        public UserBDC()
-            : base(BDCType.UserBDC)
+        public UserBdc()
+            : base(Shared.BdcType.UserBdc)
         {
 
         }
 
-        public OperationResult<IUserDTO> CreateUser(IUserDTO userDTO)
+        public OperationResult<IUserDto> CreateUser(IUserDto userDto)
         {
-            OperationResult<IUserDTO> createUserReturnValue = null;
+            OperationResult<IUserDto> createUserReturnValue = null;
             try
             {
-                EmployeePortalValidationResult validationResult = Validator<UserValidator, IUserDTO>.Validate(userDTO, Constants.UserMessage.CreateUserEmail);
+                EmployeePortalValidationResult validationResult = Validator<UserValidator, IUserDto>.Validate(userDto, Constants.UserMessage.CreateUserEmail);
 
                 if (!validationResult.IsValid)
                 {
-                    createUserReturnValue = OperationResult<IUserDTO>.CreateFailureResult(validationResult);
+                    createUserReturnValue = OperationResult<IUserDto>.CreateFailureResult(validationResult);
                 }
                 else
                 {
-                    IUserDAC employeeDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                    IUserDTO returnedUserDTO = employeeDAC.CreateUser(userDTO);
-                    if (returnedUserDTO != null)
+                    IUserDac employeeDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                    IUserDto returnedUserDto = employeeDac.CreateUser(userDto);
+                    if (returnedUserDto != null)
                     {
-                        createUserReturnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Usercreatedsuccessfully);
+                        createUserReturnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Usercreatedsuccessfully);
                     }
                     else
                     {
-                        createUserReturnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                        createUserReturnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                     }
                 }
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                createUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                createUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                createUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                createUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return createUserReturnValue;
         }
 
-        public OperationResult<IList<IUserDTO>> GetAllUsers()
+        public OperationResult<IList<IUserDto>> GetAllUsers()
         {
-            OperationResult<IList<IUserDTO>> retVal = null;
-            IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-            IList<IUserDTO> result = userDAC.GetAllUsers();
-            retVal = OperationResult<IList<IUserDTO>>.CreateSuccessResult(result);
+            OperationResult<IList<IUserDto>> retVal = null;
+            IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+            IList<IUserDto> result = userDac.GetAllUsers();
+            retVal = OperationResult<IList<IUserDto>>.CreateSuccessResult(result);
             return retVal;
         }
 
-        public OperationResult<IUserDTO> GetUserByEmail(string email)
+        public OperationResult<IUserDto> GetUserByEmail(string email)
         {
-            OperationResult<IUserDTO> getUserReturnValue = null;
+            OperationResult<IUserDto> getUserReturnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IUserDTO returnedUserDTO = userDAC.GetUserByEmail(email);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IUserDto returnedUserDto = userDac.GetUserByEmail(email);
+                if (returnedUserDto != null)
                 {
-                    getUserReturnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Successfully);
+                    getUserReturnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Successfully);
                 }
                 else
                 {
-                    getUserReturnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                    getUserReturnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                 }
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                getUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                getUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                getUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                getUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return getUserReturnValue;
         }
 
-        public OperationResult<IUserDTO> GetUserByContactNumber(string contactNumber)
+        public OperationResult<IUserDto> GetUserByContactNumber(string contactNumber)
         {
-            OperationResult<IUserDTO> getUserReturnValue = null;
+            OperationResult<IUserDto> getUserReturnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IUserDTO returnedUserDTO = userDAC.GetUserByContactNumber(contactNumber);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IUserDto returnedUserDto = userDac.GetUserByContactNumber(contactNumber);
+                if (returnedUserDto != null)
                 {
-                    getUserReturnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Reterived);
+                    getUserReturnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Reterived);
                 }
                 else
                 {
-                    getUserReturnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                    getUserReturnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                 }
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                getUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                getUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                getUserReturnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                getUserReturnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return getUserReturnValue;
         }
 
-        public OperationResult<IUserDTO> RechargeAccount(string emailId, decimal amount)
+        public OperationResult<IUserDto> RechargeAccount(string emailId, decimal amount)
         {
-            OperationResult<IUserDTO>returnValue = null;
+            OperationResult<IUserDto>returnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IUserDTO returnedUserDTO = userDAC.RechargeAccount(emailId, amount);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IUserDto returnedUserDto = userDac.RechargeAccount(emailId, amount);
+                if (returnedUserDto != null)
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Reterived);
+                    returnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Reterived);
                 }
                 else
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                    returnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                 }
 
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return returnValue;
         }
 
-        public OperationResult<IUserDTO> BlockAmount(string emailId, int amount)
+        public OperationResult<IUserDto> BlockAmount(string emailId, int amount)
         {
-            OperationResult<IUserDTO> returnValue = null;
+            OperationResult<IUserDto> returnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IUserDTO returnedUserDTO = userDAC.BlockAmount(emailId, amount);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IUserDto returnedUserDto = userDac.BlockAmount(emailId, amount);
+                if (returnedUserDto != null)
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Reterived);
+                    returnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Reterived);
                 }
                 else
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                    returnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                 }
 
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return returnValue;
         }
 
-        public OperationResult<IUserDTO> AddWinningAmount(string emailId, int betAmount, decimal multiply)
+        public OperationResult<IUserDto> AddWinningAmount(string emailId, int betAmount, decimal multiply)
         {
-            OperationResult<IUserDTO> returnValue = null;
+            OperationResult<IUserDto> returnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IUserDTO returnedUserDTO = userDAC.AddWinningAmount(emailId, betAmount, multiply);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IUserDto returnedUserDto = userDac.AddWinningAmount(emailId, betAmount, multiply);
+                if (returnedUserDto != null)
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.Reterived);
+                    returnValue = OperationResult<IUserDto>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.Reterived);
                 }
                 else
                 {
-                    returnValue = OperationResult<IUserDTO>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
+                    returnValue = OperationResult<IUserDto>.CreateFailureResult(Constants.UserMessage.InsertionFialed);
                 }
 
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                returnValue = OperationResult<IUserDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                returnValue = OperationResult<IUserDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return returnValue;
         }
 
-        public OperationResult<IList<IUserDTO>> SearchUser(string name, string contact, string email)
+        public OperationResult<IList<IUserDto>> SearchUser(string name, string contact, string email)
         {
-            OperationResult<IList<IUserDTO>> getUserReturnValue = null;
+            OperationResult<IList<IUserDto>> getUserReturnValue = null;
             try
             {
-                IUserDAC userDAC = (IUserDAC)DACFactory.Instance.Create(DACType.UserDAC);
-                IList<IUserDTO> returnedUserDTO = userDAC.SearchUser(name, contact,email);
-                if (returnedUserDTO != null)
+                IUserDac userDac = (IUserDac)DacFactory.Instance.Create(DacType.UserDac);
+                IList<IUserDto> returnedUserDto = userDac.SearchUser(name, contact,email);
+                if (returnedUserDto != null)
                 {
-                    getUserReturnValue = OperationResult<IList<IUserDTO>>.CreateSuccessResult(returnedUserDTO, Constants.UserMessage.SearchSuc);
+                    getUserReturnValue = OperationResult<IList<IUserDto>>.CreateSuccessResult(returnedUserDto, Constants.UserMessage.SearchSuc);
                 }
                 else
                 {
-                    getUserReturnValue = OperationResult<IList<IUserDTO>>.CreateFailureResult(Constants.UserMessage.SearchFail);
+                    getUserReturnValue = OperationResult<IList<IUserDto>>.CreateFailureResult(Constants.UserMessage.SearchFail);
                 }
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                getUserReturnValue = OperationResult<IList<IUserDTO>>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                getUserReturnValue = OperationResult<IList<IUserDto>>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                getUserReturnValue = OperationResult<IList<IUserDTO>>.CreateErrorResult(ex.Message, ex.StackTrace);
+                getUserReturnValue = OperationResult<IList<IUserDto>>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
 
             return getUserReturnValue;

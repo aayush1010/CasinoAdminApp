@@ -10,6 +10,6 @@
         /// Gets the type of the BDC.
         /// </summary>
         /// <value>The type of the BDC.</value>
-        BDCType BDCType { get; }
+        BdcType BdcType { get; }
     }
 }

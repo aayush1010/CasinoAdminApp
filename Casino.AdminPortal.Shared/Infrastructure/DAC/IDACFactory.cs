@@ -4,7 +4,7 @@
     /// Defines a contract for data access component factory,
     /// Author		: Nagarro
     /// </summary>
-    public interface IDACFactory
+    public interface IDacFactory
     {
         /// <summary>
         /// Creates the specified DAC type.
@@ -12,6 +12,6 @@
         /// <param name="type">The DAC type.</param>
         /// <param name="args">The args.</param>
         /// <returns></returns>
-        IDataAccessComponent Create(DACType type, params object[] args);
+        IDataAccessComponent Create(DacType type, params object[] args);
     }
 }

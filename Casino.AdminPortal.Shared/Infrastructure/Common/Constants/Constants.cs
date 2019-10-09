@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     public static class Constants
     {
@@ -19,7 +13,7 @@ namespace Casino.AdminPortal.Shared
             public const string SearchSuc = "Search successfully";
             public const string SearchFail = "Search Failed";
             public const string AgeError = "User's age must be greater than 18";
-            public const string DOB = "DateOfBirth";
+            public const string Dob = "DateOfBirth";
             public const string Age = "Age Must be More Than 18";
             public const string ErrorName = "Use alphabets and space only please";
             public const string ErrorContact = "Contact Number Must of 10 Digits and Must be Numeric";

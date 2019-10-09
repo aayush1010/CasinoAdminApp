@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Casino.AdminPortal.Shared
 {
-    public interface IUserBDC : IBusinessDomainComponent
+    public interface IUserBdc : IBusinessDomainComponent
     {
-        OperationResult<IUserDTO> CreateUser(IUserDTO userDTO);
-        OperationResult<IList<IUserDTO>> GetAllUsers();
-        OperationResult<IUserDTO> GetUserByEmail(string email);
-        OperationResult<IUserDTO> GetUserByContactNumber(string contactNumber);
-        OperationResult<IUserDTO> RechargeAccount(string emailId, decimal amount);
-        OperationResult<IUserDTO> BlockAmount(string emailId, int amount);
-        OperationResult<IUserDTO> AddWinningAmount(string emailId, int betAmount, decimal multiply);
-        OperationResult<IList<IUserDTO>> SearchUser(string name, string contact, string email);
+        OperationResult<IUserDto> CreateUser(IUserDto userDto);
+        OperationResult<IList<IUserDto>> GetAllUsers();
+        OperationResult<IUserDto> GetUserByEmail(string email);
+        OperationResult<IUserDto> GetUserByContactNumber(string contactNumber);
+        OperationResult<IUserDto> RechargeAccount(string emailId, decimal amount);
+        OperationResult<IUserDto> BlockAmount(string emailId, int amount);
+        OperationResult<IUserDto> AddWinningAmount(string emailId, int betAmount, decimal multiply);
+        OperationResult<IList<IUserDto>> SearchUser(string name, string contact, string email);
     }
 }

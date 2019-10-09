@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
 
 namespace Casino.AdminPortal.Shared
 {
@@ -15,9 +12,9 @@ namespace Casino.AdminPortal.Shared
     [Serializable]
     public sealed class OperationResult<T>
     {
-        private bool checkedForValidity = false;
+        private bool _checkedForValidity = false;
 
-        private T data;
+        private T _data;
 
         /// <summary>
         /// Gets or sets the data.
@@ -27,18 +24,15 @@ namespace Casino.AdminPortal.Shared
         {
             get
             {
-                if (!checkedForValidity)
+                if (!_checkedForValidity)
                 {
                     throw new NotSupportedException("You must check for data validity by calling IsValid() first!");
                 }
 
-                return data;
+                return _data;
             }
 
-            private set
-            {
-                data = value;
-            }
+            private set => _data = value;
         }
 
         /// <summary>
@@ -95,7 +89,7 @@ namespace Casino.AdminPortal.Shared
         /// </returns>
         public bool IsValid()
         {
-            bool result = checkedForValidity = true;
+            bool result = _checkedForValidity = true;
 
             if (this.Data == null || HasValidationFailed() || HasExceptionOccurred() || HasFailed())
             {

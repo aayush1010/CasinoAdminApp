@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Casino.AdminPortal.Shared;
+﻿using Casino.AdminPortal.Shared;
 using FluentValidation;
 
 namespace Casino.AdminPortal.Business

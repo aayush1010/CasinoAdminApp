@@ -32,10 +32,10 @@
         /// Fills the DTO from entity.
         /// </summary>
         /// <param name="fromEntity">From entity.</param>
-        /// <param name="toDTO">To DTO.</param>
-        public static void FillDTOFromEntity(object fromEntity, IDTO toDTO)
+        /// <param name="toDto">To DTO.</param>
+        public static void FillDtoFromEntity(object fromEntity, IDto toDto)
         {
-            FillData(toDTO, fromEntity, false);
+            FillData(toDto, fromEntity, false);
         }
 
         /// <summary>
@@ -44,22 +44,22 @@
         /// <param name="fromComplex">
         /// The from Complex Object.
         /// </param>
-        /// <param name="toDTO">
+        /// <param name="toDto">
         /// To DTO.
         /// </param>
-        public static void FillDTOFromComplexObject(object fromComplex, IDTO toDTO)
+        public static void FillDtoFromComplexObject(object fromComplex, IDto toDto)
         {
-            FillData(toDTO, fromComplex, false);
+            FillData(toDto, fromComplex, false);
         }
 
         /// <summary>
         /// Fills the entity from DTO.
         /// </summary>
-        /// <param name="fromDTO">From DTO.</param>
+        /// <param name="fromDto">From DTO.</param>
         /// <param name="toEntity">To entity.</param>
-        public static void FillEntityFromDTO(IDTO fromDTO, object toEntity)
+        public static void FillEntityFromDto(IDto fromDto, object toEntity)
         {
-            FillData(fromDTO, toEntity, true);
+            FillData(fromDto, toEntity, true);
         }
 
         #region Private Helper Methods
@@ -70,7 +70,7 @@
         /// <param name="dto">The dto.</param>
         /// <param name="entity">The entity.</param>
         /// <param name="entityFromDto">if private set to <c>true</c> [entity from dto].</param>
-        private static void FillData(IDTO dto, object entity, bool entityFromDto)
+        private static void FillData(IDto dto, object entity, bool entityFromDto)
         {
             var dtoType = dto.GetType();
             var entityType = entity.GetType();
@@ -119,8 +119,8 @@
 
                     var sourceProperty = entityFromDto ? property : entityProperty;
                     var destinationProperty = entityFromDto ? entityProperty : property;
-                    var sourceObject = entityFromDto ? (dto as object) : (entity as object);
-                    var destinationObject = entityFromDto ? (entity as object) : (dto as object);
+                    var sourceObject = entityFromDto ? dto : entity;
+                    var destinationObject = entityFromDto ? entity : dto;
                     var sourceValue = sourceProperty.GetValue(sourceObject, null);
 
                     if (destinationProperty.CanWrite)
@@ -141,9 +141,9 @@
         /// </summary>
         /// <param name="property">The property.</param>
         /// <param name="mappingType">Type of the mapping.</param>
-        /// <param name="entityFromDTO">if set to <c>true</c> [entity from DTO].</param>
+        /// <param name="entityFromDto">if set to <c>true</c> [entity from DTO].</param>
         /// <returns></returns>
-        private static string GetEntityPropertyName(PropertyInfo property, MappingType mappingType, bool entityFromDTO)
+        private static string GetEntityPropertyName(PropertyInfo property, MappingType mappingType, bool entityFromDto)
         {
             string entityPropertyName = string.Empty;
             var attribute =
@@ -154,31 +154,34 @@
 
             if (attribute != null)
             {
-                if (entityFromDTO)
+                if (entityFromDto)
                 {
-                    skipMapping = !(attribute.MappingDirection == MappingDirectionType.EntityFromDTO || attribute.MappingDirection == MappingDirectionType.Both);
+                    skipMapping = !(attribute.MappingDirection == MappingDirectionType.EntityFromDto || attribute.MappingDirection == MappingDirectionType.Both);
                 }
                 else
                 {
-                    skipMapping = !(attribute.MappingDirection == MappingDirectionType.DTOFromEntity || attribute.MappingDirection == MappingDirectionType.Both);
+                    skipMapping = !(attribute.MappingDirection == MappingDirectionType.DtoFromEntity || attribute.MappingDirection == MappingDirectionType.Both);
                 }
             }
 
             switch (mappingType)
             {
                 case MappingType.TotalExplicit:
+                {
                     if (attribute == null)
                     {
                         throw new EntityConversionException(
                             string.Format(
-                                        Thread.CurrentThread.CurrentCulture, 
-                                        "Property '{0}' should have EntityPropertyMappingAttribute !"), 
-                                        entityPropertyName);
+                                Thread.CurrentThread.CurrentCulture, 
+                                "Property '{0}' should have EntityPropertyMappingAttribute !"), 
+                            entityPropertyName);
                     }
 
                     entityPropertyName = skipMapping ? string.Empty : attribute.MappedEntityPropertyName;
                     break;
+                }
                 case MappingType.TotalImplicit:
+                {
                     if (attribute != null && skipMapping)
                     {
                         entityPropertyName = string.Empty;
@@ -189,7 +192,9 @@
                     }
 
                     break;
+                }
                 case MappingType.Hybrid:
+                {
                     if (attribute == null)
                     {
                         entityPropertyName = property.Name;
@@ -201,8 +206,11 @@
                     else
                         entityPropertyName = attribute.MappedEntityPropertyName;
                     break;
+                }
                 default:
+                {
                     break;
+                }
             }
 
             return entityPropertyName;
@@ -212,7 +220,7 @@
         /// Verifies the type of for entity.
         /// </summary>
         /// <param name="entityType">Type of the entity.</param>
-        /// <param name="DTOType">Type of the DTO.</param>
+        /// <param name="dtoType">Type of the DTO.</param>
         /// <param name="mappingType">Type of the mapping.</param>
         /// <returns></returns>
         //private static bool VerifyForEntityType(Type entityType, Type DTOType, out MappingType mappingType)
@@ -228,9 +236,9 @@
         //    throw new EntityConversionException("Only one EntityMappingAttribute can be applied on type '{0}' !", DTOType.ToString());
         //}
 
-        private static bool VerifyForEntityType(Type entityType, Type DTOType, out MappingType mappingType)
+        private static bool VerifyForEntityType(Type entityType, Type dtoType, out MappingType mappingType)
         {
-            var attributes = DTOType.GetCustomAttributes(typeof(EntityMappingAttribute), false);
+            var attributes = dtoType.GetCustomAttributes(typeof(EntityMappingAttribute), false);
             if (attributes.Count() == 1)
             {
                 var mappingAttribute = (EntityMappingAttribute)attributes[0];
@@ -238,7 +246,7 @@
                 return true;
             }
 
-            throw new EntityConversionException("Only one EntityMappingAttribute can be applied on type '{0}' !", DTOType.ToString());
+            throw new EntityConversionException("Only one EntityMappingAttribute can be applied on type '{0}' !", dtoType.ToString());
         }
 
 
@@ -257,8 +265,8 @@
         // Since multiple simultaneous calls to this class may come, it is safe
         // to have a seperate copy of this functionality class
 
-        private static volatile EntityConverter instance;
-        private static string instanceLock = "LOCK";
+        private static volatile EntityConverter _instance;
+        private static readonly string _instanceLock = "LOCK";
 
         /// <summary>
         /// Gets the instance.
@@ -269,18 +277,18 @@
             get
             {
                 // create object if not available
-                if (instance == null)
+                if (_instance == null)
                 {
-                    lock (instanceLock)
+                    lock (_instanceLock)
                     {
-                        if (instance == null)
+                        if (_instance == null)
                         {
-                            instance = new EntityConverter();
+                            _instance = new EntityConverter();
                         }
                     }
                 }
 
-                return instance;
+                return _instance;
             }
         }
 

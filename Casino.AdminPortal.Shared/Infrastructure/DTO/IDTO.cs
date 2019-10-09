@@ -7,7 +7,7 @@ namespace Casino.AdminPortal.Shared
     /// Defines a contract for base DTO,
     /// Author : Nagarro 
     /// </summary>
-    public interface IDTO : ICloneable, INotifyPropertyChanged, INotifyPropertyChanging
+    public interface IDto : ICloneable, INotifyPropertyChanged, INotifyPropertyChanging
     {
         /// <summary>
         /// gets or sets the state of the object.
@@ -19,13 +19,13 @@ namespace Casino.AdminPortal.Shared
         /// gets the unique ID.
         /// </summary>
         /// <value>The unique ID.</value>        
-        Guid? UniqueID { get; }
+        Guid? UniqueId { get; }
 
         /// <summary>
         /// gets the type of the DTO.
         /// </summary>
         /// <value>The type of the DTO.</value>        
-        DTOType DTOType { get; }
+        DtoType DtoType { get; }
 
     }
 }

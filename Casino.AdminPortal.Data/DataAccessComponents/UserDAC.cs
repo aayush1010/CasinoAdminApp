@@ -3,66 +3,64 @@ using Casino.AdminPortal.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Data
 {
-    public class UserDAC : DACBase, IUserDAC
+    public class UserDac : DacBase, IUserDac
     {
-        public UserDAC()
-            : base(DACType.UserDAC)
+        public UserDac()
+            : base(DacType.UserDac)
         {
 
         }
 
-        public IUserDTO CreateUser(IUserDTO userDTO)
+        public IUserDto CreateUser(IUserDto userDto)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
             try
             {
                 using (CasinoAdminPortalEntities context = new CasinoAdminPortalEntities())
                 {
                     Player player = new Player();
-                    userDTO.BlockedAmount = 0;
-                    userDTO.AccountBalance = 500;
-                    EntityDataModel.EntityConverter.FillEntityFromDTO(userDTO, player);
+                    userDto.BlockedAmount = 0;
+                    userDto.AccountBalance = 500;
+                    EntityDataModel.EntityConverter.FillEntityFromDto(userDto, player);
                     context.Players.Add(player);
                     if (context.SaveChanges() > 0)
                     {
-                        userDTO.PlayerId = player.PlayerId;
-                        createUserRetval = userDTO;
+                        userDto.PlayerId = player.PlayerId;
+                        createUserRetval = userDto;
                     }
                 }
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         }
 
 
-        public IList<IUserDTO> GetAllUsers()
+        public IList<IUserDto> GetAllUsers()
         {
-            IList<IUserDTO> userDtoList = new List<IUserDTO>();
+            IList<IUserDto> userDtoList = new List<IUserDto>();
             using (CasinoAdminPortalEntities context = new CasinoAdminPortalEntities())
             {
                 foreach (Player player in context.Players)
                 {
-                    IUserDTO userDTO = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                    EntityDataModel.EntityConverter.FillDTOFromEntity(player, userDTO);
-                    userDtoList.Add(userDTO);
+                    IUserDto userDto = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                    EntityDataModel.EntityConverter.FillDtoFromEntity(player, userDto);
+                    userDtoList.Add(userDto);
                 }
                     return userDtoList;
             }
         }
 
 
-        public IUserDTO GetUserByEmail(string email)
+        public IUserDto GetUserByEmail(string email)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
 
             try
             {
@@ -72,8 +70,8 @@ namespace Casino.AdminPortal.Data
 
                     if (playerDetails != null)
                     {
-                        createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                        EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                        createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         
                     }
                 }
@@ -81,15 +79,15 @@ namespace Casino.AdminPortal.Data
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         
         }
 
-        public IUserDTO GetUserByContactNumber(string contactNumber)
+        public IUserDto GetUserByContactNumber(string contactNumber)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
 
             try
             {
@@ -99,22 +97,22 @@ namespace Casino.AdminPortal.Data
 
                     if (playerDetails != null)
                     {
-                        createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                        EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                        createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                     }
                 }
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         }
 
-        public IUserDTO RechargeAccount(string emailId, decimal amount)
+        public IUserDto RechargeAccount(string emailId, decimal amount)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
 
             try
             {
@@ -127,8 +125,8 @@ namespace Casino.AdminPortal.Data
                         playerDetails.AccountBalance += amount;
                         if (context.SaveChanges() > 0)
                         {
-                            createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                            EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                            createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         }
                        
                     }
@@ -137,24 +135,24 @@ namespace Casino.AdminPortal.Data
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         }
 
-        public IUserDTO BlockAmount(string emailId, int amount)
+        public IUserDto BlockAmount(string emailId, int amount)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
             decimal amountD = (decimal)amount;
             try
             {
                 using (CasinoAdminPortalEntities context = new CasinoAdminPortalEntities())
                 {
                     Player playerDetails = context.Players.FirstOrDefault(item => item.EmailId == emailId);
-                    if (playerDetails.AccountBalance < amountD)
+                    if (playerDetails != null && playerDetails.AccountBalance < amountD)
                     {
-                        createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                        EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                        createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                        EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                     }
                     else
                     {
@@ -163,22 +161,22 @@ namespace Casino.AdminPortal.Data
                         playerDetails.AccountBalance -= amountD;
                         if (context.SaveChanges() > 0)
                         {
-                            createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                            EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                            createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         }
                     }
                 }
             }
             catch (Exception ex){
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         }
 
-        public IUserDTO AddWinningAmount(string emailId, int betAmount, decimal multiply)
+        public IUserDto AddWinningAmount(string emailId, int betAmount, decimal multiply)
         {
-            IUserDTO createUserRetval = null;
+            IUserDto createUserRetval = null;
 
             try
             {
@@ -192,8 +190,8 @@ namespace Casino.AdminPortal.Data
                         playerDetails.BlockedAmount = 0;
                         if (context.SaveChanges() > 0)
                         {
-                            createUserRetval = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                            EntityDataModel.EntityConverter.FillDTOFromEntity(playerDetails, createUserRetval);
+                            createUserRetval = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                            EntityDataModel.EntityConverter.FillDtoFromEntity(playerDetails, createUserRetval);
                         }
 
                     }
@@ -202,16 +200,16 @@ namespace Casino.AdminPortal.Data
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return createUserRetval;
         }
 
 
 
-        public IList<IUserDTO> SearchUser(string name, string contact, string email)
+        public IList<IUserDto> SearchUser(string name, string contact, string email)
         {
-            IList<IUserDTO> retVal = null;
+            IList<IUserDto> retVal = null;
             try
             {
                 using (CasinoAdminPortalEntities context = new CasinoAdminPortalEntities())
@@ -222,12 +220,12 @@ namespace Casino.AdminPortal.Data
                                                             email).ToList();
                     if (userList.Count > 0)
                     {
-                        retVal = new List<IUserDTO>();
+                        retVal = new List<IUserDto>();
                         foreach (var user in userList)
                         {
-                            IUserDTO userDTO = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
-                            EntityDataModel.EntityConverter.FillDTOFromEntity(user, userDTO);
-                            retVal.Add(userDTO);
+                            IUserDto userDto = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
+                            EntityDataModel.EntityConverter.FillDtoFromEntity(user, userDto);
+                            retVal.Add(userDto);
                         }
                     }
                 }
@@ -235,7 +233,7 @@ namespace Casino.AdminPortal.Data
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException(ex.Message);
+                throw new DacException(ex.Message);
             }
             return retVal;
 

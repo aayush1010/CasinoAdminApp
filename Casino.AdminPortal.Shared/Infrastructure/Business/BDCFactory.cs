@@ -4,18 +4,18 @@
     /// Represents the factory for BDC classes,
     /// Author : Nagarro
     /// </summary>
-    public class BDCFactory : FactoryBase, IBDCFactory
+    public class BdcFactory : FactoryBase, IBdcFactory
     {
         //The variable is declared to be volatile to ensure that assignment to the 
         //_instance variable completes before the instance variable can be accessed.
-        private static volatile BDCFactory _instance;
-        private static object _syncObject = new object();
+        private static volatile BdcFactory _instance;
+        private static readonly object _syncObject = new object();
 
         #region Ctor
         /// <summary>
         /// Constructor definition
         /// </summary>
-        private BDCFactory()
+        private BdcFactory()
         {
         }
         #endregion
@@ -26,7 +26,7 @@
         /// Instance is private static property to return the same Instance of the class everytime.
         /// Note: Double - checked serialized initialization of class pattern is used.
         /// </summary>
-        public static BDCFactory Instance
+        public static BdcFactory Instance
         {
             get
             {
@@ -41,7 +41,7 @@
                         //since some other thread may have acquired the lock first and constructed the object.
                         if (_instance == null)
                         {
-                            _instance = new BDCFactory();
+                            _instance = new BdcFactory();
                         }
                     }
                 }
@@ -61,13 +61,13 @@
         /// <param name="type">The type.</param>
         /// <param name="args">The args.</param>
         /// <returns></returns>
-        public IBusinessDomainComponent Create(BDCType type, params object[] args)
+        public IBusinessDomainComponent Create(BdcType type, params object[] args)
         {
             // get attribute value
-            QualifiedTypeNameAttribute QualifiedNameAttr = EnumAttributeUtility<BDCType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
+            QualifiedTypeNameAttribute qualifiedNameAttr = EnumAttributeUtility<BdcType, QualifiedTypeNameAttribute>.GetEnumAttribute(type.ToString());
 
             // create instance
-            return (IBusinessDomainComponent)this.CreateObjectInstance(QualifiedNameAttr.AssemblyFileName, QualifiedNameAttr.QualifiedTypeName, args);
+            return (IBusinessDomainComponent)this.CreateObjectInstance(qualifiedNameAttr.AssemblyFileName, qualifiedNameAttr.QualifiedTypeName, args);
         }
 
         #endregion

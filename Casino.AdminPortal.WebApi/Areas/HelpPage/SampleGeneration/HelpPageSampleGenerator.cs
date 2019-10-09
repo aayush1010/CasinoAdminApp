@@ -261,15 +261,19 @@ namespace Casino.AdminPortal.WebApi.Areas.HelpPage
                 switch (sampleDirection)
                 {
                     case SampleDirection.Request:
+                    {
                         ApiParameterDescription requestBodyParameter = api.ParameterDescriptions.FirstOrDefault(p => p.Source == ApiParameterSource.FromBody);
                         type = requestBodyParameter == null ? null : requestBodyParameter.ParameterDescriptor.ParameterType;
                         formatters = api.SupportedRequestBodyFormatters;
                         break;
+                    }
                     case SampleDirection.Response:
                     default:
+                    {
                         type = api.ResponseDescription.ResponseType ?? api.ResponseDescription.DeclaredType;
                         formatters = api.SupportedResponseFormatters;
                         break;
+                    }
                 }
             }
 
@@ -407,9 +411,13 @@ namespace Casino.AdminPortal.WebApi.Areas.HelpPage
             switch (sampleDirection)
             {
                 case SampleDirection.Request:
+                {
                     return formatter.CanReadType(type);
+                }
                 case SampleDirection.Response:
+                {
                     return formatter.CanWriteType(type);
+                }
             }
             return false;
         }

@@ -13,7 +13,7 @@ namespace Casino.AdminPortal.Shared
         private const string MessageHeader = "Factory Exception: ";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DACException"/> class.
+        /// Initializes a new instance of the <see cref="DacException"/> class.
         /// </summary>
         public FactoryException()
             : base(MessageHeader, null)
@@ -22,7 +22,7 @@ namespace Casino.AdminPortal.Shared
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DACException"/> class.
+        /// Initializes a new instance of the <see cref="DacException"/> class.
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         public FactoryException(int errorCode)
@@ -31,7 +31,7 @@ namespace Casino.AdminPortal.Shared
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DACException"/> class.
+        /// Initializes a new instance of the <see cref="DacException"/> class.
         /// </summary>
         /// <param name="message">The message.</param>
         public FactoryException(string message)
@@ -40,7 +40,7 @@ namespace Casino.AdminPortal.Shared
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DACException"/> class.
+        /// Initializes a new instance of the <see cref="DacException"/> class.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="innerException">The inner exception.</param>

@@ -1,26 +1,21 @@
 ﻿using Casino.AdminPortal.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Data
 {
-    public class SampleDAC : DACBase, ISampleDAC
+    public class SampleDac : DacBase, ISampleDac
     {
-        public SampleDAC() : base(DACType.SampleDAC)
+        public SampleDac() : base(DacType.SampleDac)
         {
 
         }
 
-        public ISampleDTO SampleMethod(ISampleDTO sampleDTO)
+        public ISampleDto SampleMethod(ISampleDto sampleDto)
         {
             //Entity Converter
             //Save to DB
 
-            sampleDTO.SampleProperty = "New Value";
-            return sampleDTO;
+            sampleDto.SampleProperty = "New Value";
+            return sampleDto;
         }
     }
 

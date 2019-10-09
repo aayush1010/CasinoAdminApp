@@ -1,13 +1,9 @@
 ﻿using Casino.AdminPortal.Shared;
 using Casino.AdminPortal.Web.Models;
-using Casino.AdminPortal.Web.Shared;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using PagedList;
 
@@ -17,9 +13,9 @@ namespace Casino.AdminPortal.Web.Controllers
     {
         // GET: User
 
-        IUserFacade userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
+        readonly IUserFacade _userFacade = (IUserFacade)FacadeFactory.Instance.Create(FacadeType.UserFacade);
 
-        public byte[] convertToBytes(HttpPostedFileBase image)
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
         {
             byte[] imageBytes = null;
             BinaryReader reader = new BinaryReader(image.InputStream);
@@ -39,7 +35,7 @@ namespace Casino.AdminPortal.Web.Controllers
                 searchEmail = (searchEmail == "") ? null : searchEmail;
 
             }
-            OperationResult<IList<IUserDTO>> resultAllUsers = userFacade.SearchUser(searchName, searchContact, searchEmail);
+            OperationResult<IList<IUserDto>> resultAllUsers = _userFacade.SearchUser(searchName, searchContact, searchEmail);
             if (resultAllUsers.IsValid())
             {
                 foreach (var item in resultAllUsers.Data)
@@ -61,7 +57,7 @@ namespace Casino.AdminPortal.Web.Controllers
 
         public ActionResult GetAllUsers(int ?page)
         {
-            OperationResult<IList<IUserDTO>> resultAllUsers = userFacade.GetAllUsers();
+            OperationResult<IList<IUserDto>> resultAllUsers = _userFacade.GetAllUsers();
             List<UserModel> result = new List<UserModel>();
             if (resultAllUsers.IsValid())
             {
@@ -95,13 +91,13 @@ namespace Casino.AdminPortal.Web.Controllers
         [HttpPost]
         public ActionResult CreateUser(UserModel responseModel)
         {
-            IUserDTO userDTOToCreate = (IUserDTO)DTOFactory.Instance.Create(DTOType.UserDTO);
+            IUserDto userDtoToCreate = (IUserDto)DtoFactory.Instance.Create(DtoType.UserDto);
             HttpPostedFileBase file = Request.Files["ImageData"];
-            responseModel.IdentityProof = convertToBytes(file);
+            responseModel.IdentityProof = ConvertToBytes(file);
             if (ModelState.IsValid)
             {
-                DTOConverter.FillDTOFromViewModel(userDTOToCreate, responseModel);
-                OperationResult<IUserDTO> resultCreate = userFacade.CreateUser(userDTOToCreate);
+                DTOConverter.FillDTOFromViewModel(userDtoToCreate, responseModel);
+                OperationResult<IUserDto> resultCreate = _userFacade.CreateUser(userDtoToCreate);
                 if (resultCreate.ValidationResult != null && resultCreate.ValidationResult.Errors != null)
                 {
                     IList<EmployeePortalValidationFailure> resultFail = resultCreate.ValidationResult.Errors;
@@ -117,9 +113,9 @@ namespace Casino.AdminPortal.Web.Controllers
 
         }
         
-        public ActionResult AddMoney(string EmailId, decimal RechargeAmount)
+        public ActionResult AddMoney(string emailId, decimal rechargeAmount)
         {
-            OperationResult<IUserDTO> resultCreate = userFacade.RechargeAccount(EmailId, RechargeAmount);
+            OperationResult<IUserDto> resultCreate = _userFacade.RechargeAccount(emailId, rechargeAmount);
 
             if (resultCreate.ValidationResult != null && resultCreate.ValidationResult.Errors != null)
             {

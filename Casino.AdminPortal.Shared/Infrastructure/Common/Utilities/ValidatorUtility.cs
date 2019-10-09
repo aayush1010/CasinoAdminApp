@@ -317,36 +317,46 @@ namespace Casino.AdminPortal.Shared
         /// <returns></returns>
         static public object ValidateDataObject(object iObject)
         {
-            string _typeName = string.Empty;
+            string typeName = string.Empty;
 
             try
             {
                 if (iObject != null)
                 {
-                    _typeName = iObject.GetType().FullName;
+                    typeName = iObject.GetType().FullName;
 
-                    switch (_typeName.ToUpper())
+                    switch (typeName.ToUpper())
                     {
                         case "SYSTEM.STRING":
+                        {
                             if (iObject.ToString() == string.Empty)
                                 iObject = DBNull.Value;
                             break;
+                        }
                         case "SYSTEM.INT32":
+                        {
                             if (Int32.Parse(iObject.ToString()) == Int32.MinValue)
                                 iObject = DBNull.Value;
                             break;
+                        }
                         case "SYSTEM.INT64":
+                        {
                             if (Int64.Parse(iObject.ToString()) == Int64.MinValue)
                                 iObject = DBNull.Value;
                             break;
+                        }
                         case "SYSTEM.DATETIME":
+                        {
                             if (DateTime.Parse(iObject.ToString()) == DateTime.MinValue)
                                 iObject = DBNull.Value;
                             break;
+                        }
                         case "SYSTEM.DECIMAL":
+                        {
                             if (Decimal.Parse(iObject.ToString()) == Decimal.MinValue)
                                 iObject = DBNull.Value;
                             break;
+                        }
                     }
                 }
                 else
@@ -355,7 +365,7 @@ namespace Casino.AdminPortal.Shared
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                throw new DACException("An exception occurred while Validating Data Object.", ex);
+                throw new DacException("An exception occurred while Validating Data Object.", ex);
             }
 
             return iObject;

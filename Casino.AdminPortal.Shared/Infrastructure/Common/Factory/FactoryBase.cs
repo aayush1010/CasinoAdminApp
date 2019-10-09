@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Shared
 {
@@ -18,7 +14,7 @@ namespace Casino.AdminPortal.Shared
         /// <summary>
         /// Stores the path of assemblies source folder
         /// </summary>
-        private static readonly string _assembliesPath = GetAssembliesSourceOutputBinPath();
+        private static readonly string AssembliesPath = GetAssembliesSourceOutputBinPath();
 
         #region Ctor
         /// <summary>
@@ -82,7 +78,7 @@ namespace Casino.AdminPortal.Shared
             // Load assembly form passed parameter if it is not found as currently executing one.
             if (sourceAssembly == null)
             {
-                sourceAssembly = Assembly.LoadFrom(_assembliesPath + assemblyFileName);
+                sourceAssembly = Assembly.LoadFrom(AssembliesPath + assemblyFileName);
             }
 
             return sourceAssembly;

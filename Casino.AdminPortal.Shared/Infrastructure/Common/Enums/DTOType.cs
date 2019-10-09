@@ -3,7 +3,7 @@
     /// <summary>
     /// Data Transfer Objects
     /// </summary>
-    public enum DTOType
+    public enum DtoType
     {
 
         /// <summary>
@@ -11,9 +11,9 @@
         /// </summary>
         Undefined = 0,
         [QualifiedTypeName("Casino.AdminPortal.DTOModel.dll", "Casino.AdminPortal.DTOModel.SampleDTO")]
-        SampleDTO = 1,
+        SampleDto = 1,
         [QualifiedTypeName("Casino.AdminPortal.DTOModel.dll", "Casino.AdminPortal.DTOModel.UserDTO")]
-        UserDTO = 2,
+        UserDto = 2,
         
     }
 }

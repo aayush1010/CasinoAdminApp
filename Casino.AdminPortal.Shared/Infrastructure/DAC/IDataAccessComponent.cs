@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
     /// <summary>
     /// Defines a contract for data access component,
@@ -12,7 +10,7 @@ namespace Casino.AdminPortal.Shared
         /// private gets the type of the DAC.
         /// </summary>
         /// <value>The type of the DAC.</value>
-        DACType Type { get; }
+        DacType Type { get; }
 
     }
 }

@@ -3,11 +3,11 @@
     /// <summary>
     /// Business Domain Component Type
     /// </summary>
-    public enum BDCType
+    public enum BdcType
     {
         [QualifiedTypeName("Casino.AdminPortal.Business.dll", "Casino.AdminPortal.Business.SampleBDC")]
-        SampleBDC = 0,
+        SampleBdc = 0,
         [QualifiedTypeName("Casino.AdminPortal.Business.dll", "Casino.AdminPortal.Business.UserBDC")]
-        UserBDC = 1
+        UserBdc = 1
     }
 }

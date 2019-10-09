@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Casino.AdminPortal.Shared
+﻿namespace Casino.AdminPortal.Shared
 {
-    public interface ISampleDAC : IDataAccessComponent
+    public interface ISampleDac : IDataAccessComponent
     {
-        ISampleDTO SampleMethod(ISampleDTO sampleDTO);
+        ISampleDto SampleMethod(ISampleDto sampleDto);
     }
 }

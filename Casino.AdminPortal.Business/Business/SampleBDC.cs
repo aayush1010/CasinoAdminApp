@@ -1,37 +1,33 @@
 ﻿using Casino.AdminPortal.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Casino.AdminPortal.Business
 {
-    public class SampleBDC : BDCBase, ISampleBDC
+    public class SampleBdc : BdcBase, ISampleBdc
     {
-        public SampleBDC() : base(BDCType.SampleBDC)
+        public SampleBdc() : base(Shared.BdcType.SampleBdc)
         {
 
         }
 
-        public OperationResult<ISampleDTO> SampleMethod(ISampleDTO sampleDTO)
+        public OperationResult<ISampleDto> SampleMethod(ISampleDto sampleDto)
         {
-            OperationResult<ISampleDTO> retVal = null;
+            OperationResult<ISampleDto> retVal = null;
 
             try
             {
-                ISampleDAC sampleDAC = (ISampleDAC)DACFactory.Instance.Create(DACType.SampleDAC);
-                sampleDTO = sampleDAC.SampleMethod(sampleDTO);
-                retVal = OperationResult<ISampleDTO>.CreateSuccessResult(sampleDTO);
+                ISampleDac sampleDac = (ISampleDac)DacFactory.Instance.Create(DacType.SampleDac);
+                sampleDto = sampleDac.SampleMethod(sampleDto);
+                retVal = OperationResult<ISampleDto>.CreateSuccessResult(sampleDto);
             }
-            catch (DACException dacEx)
+            catch (DacException dacEx)
             {
-                retVal = OperationResult<ISampleDTO>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
+                retVal = OperationResult<ISampleDto>.CreateErrorResult(dacEx.Message, dacEx.StackTrace);
             }
             catch (Exception ex)
             {
                 ExceptionManager.HandleException(ex);
-                retVal = OperationResult<ISampleDTO>.CreateErrorResult(ex.Message, ex.StackTrace);
+                retVal = OperationResult<ISampleDto>.CreateErrorResult(ex.Message, ex.StackTrace);
             }
             return retVal;
         }

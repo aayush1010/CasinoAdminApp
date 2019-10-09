@@ -1,13 +1,9 @@
 ﻿using Casino.AdminPortal.Shared;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Casino.AdminPortal.Web.Models
 {
-    public class UserModel : DTOBase ,IUserDTO
+    public class UserModel : DtoBase ,IUserDto
     {
        public int PlayerId { get; set; }
        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = Constants.UserMessage.ErrorName)]

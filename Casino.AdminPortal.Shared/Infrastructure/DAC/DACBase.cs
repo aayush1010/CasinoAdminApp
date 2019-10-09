@@ -1,19 +1,16 @@
 ﻿namespace Casino.AdminPortal.Shared
 {
-    using System;
-    using System.Data;
-    using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
 
-    public abstract class DACBase : IDataAccessComponent
+    public abstract class DacBase : IDataAccessComponent
     {
 
         #region Ctor
         /// <summary>
-        /// Initializes a new instance of the <see cref="DACBase"/> class.
+        /// Initializes a new instance of the <see cref="DacBase"/> class.
         /// </summary>
         /// <param name="dacType">Type of the dac.</param>
-        protected DACBase(DACType dacType)
+        protected DacBase(DacType dacType)
         {
             this.Type = dacType;
         }
@@ -25,7 +22,7 @@
         /// private gets the type of the DAC.
         /// </summary>
         /// <value>The type of the DAC.</value>
-        public DACType Type { get; private set; }
+        public DacType Type { get; private set; }
 
         #endregion
 
@@ -36,26 +33,14 @@
         /// </summary>
         /// <value>The data access component.</value>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        protected DACFactory DataAccessComponent
-        {
-            get
-            {
-                return DACFactory.Instance;
-            }
-        }
+        protected DacFactory DataAccessComponent => DacFactory.Instance;
 
         /// <summary>
         /// Gets the factory of data transfer object.
         /// </summary>
         /// <value>The data transfer object.</value>
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        protected DTOFactory DataTransferObject
-        {
-            get
-            {
-                return DTOFactory.Instance;
-            }
-        }
+        protected DtoFactory DataTransferObject => DtoFactory.Instance;
 
         #endregion
     }

@@ -12,7 +12,7 @@ namespace Casino.AdminPortal.Shared
         //_instance variable completes before the instance variable can be accessed.
         [ThreadStatic]
         private static volatile FacadeFactory _instance;
-        private static object _syncObject = new object();
+        private static readonly object _syncObject = new object();
 
         #region Ctor
 
@@ -68,10 +68,10 @@ namespace Casino.AdminPortal.Shared
         public IFacade Create(FacadeType facadeType, params object[] args)
         {
             // get atrribute value
-            QualifiedTypeNameAttribute QualifiedNameAttr = EnumAttributeUtility<FacadeType, QualifiedTypeNameAttribute>.GetEnumAttribute(facadeType.ToString());
+            QualifiedTypeNameAttribute qualifiedNameAttr = EnumAttributeUtility<FacadeType, QualifiedTypeNameAttribute>.GetEnumAttribute(facadeType.ToString());
 
             // create instance
-            return (IFacade)this.CreateObjectInstance(QualifiedNameAttr.AssemblyFileName, QualifiedNameAttr.QualifiedTypeName, args);
+            return (IFacade)this.CreateObjectInstance(qualifiedNameAttr.AssemblyFileName, qualifiedNameAttr.QualifiedTypeName, args);
         }
 
         #endregion
